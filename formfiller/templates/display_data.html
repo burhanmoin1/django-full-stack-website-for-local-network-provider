@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Data</title>
+</head>
+<body>
+    <h1>Displaying User Inputs</h1>
+    <ul>
+        {% for user_input in user_inputs %}
+            <li>
+                <strong>Customer Name:</strong> {{ user_input.customer_name }}<br>
+                <strong>Customer Complaint:</strong> {{ user_input.customer_complaint }}<br>
+                <strong>Customer Email:</strong> {{ user_input.customer_email }}<br>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

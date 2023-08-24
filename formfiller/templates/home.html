@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Your custom styles go here */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #001F3F;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #001F3F; /* Change to your desired night blue color */
+            padding: 20px;
+
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: #95E0E8;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #D9D3E5;
+            margin-bottom: 10px;
+            font-family: 'Bebas Neue' , sans-serif;
+            font-size: 50px; /* Increase font size */
+            font-weight: 900; /* Add boldness */
+            font-style: italic;
+            line-height: 1.5; /* Add line height for readability */
+        }
+
+        .night-blue-bg {
+            background-color: #001F3F;
+            color: white;
+        }
+
+        .container-bg {
+            background-image: url('{% static "cable.gif" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 180px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 10px;
+            /* New styles to make text shadowy */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Add shadow */
+            background-color: rgba(255, 255, 255, 0.2); /* Adjust opacity */
+        }
+
+
+        .container-bg2 {
+            background-image: url('{% static "speed.gif" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 220px;
+            max-width: 1200px; /* Adjust the maximum width */
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        .container p {
+            color: #D9D3E5;
+        }
+
+        .dropdown-menu{
+
+            background-color: white;
+        }
+
+        .container i {
+            color: #57A773;
+        }
+
+        .night-blue-text {
+            color: #001F3F;
+        }
+
+                /* Live chat popup styles */
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            z-index: 9999;
+            max-width: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-popup-content {
+            padding: 10px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .hidden-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        /* Existing styles */
+
+        .container-zoom {
+            opacity: 1;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .container-zoom.zoomed {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+
+        /* Add more styles for chat interface, text area, and send button */
+
+        .footer {
+            text-align: center;
+            background-color: #001F3F;
+            padding: 5px;
+            color: #fff;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light night-blue-bg fixed-top">
+        <a class="navbar-brand text-white" href="{% url 'home' %}">Delta</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="productsDropdown">
+                        <a class="dropdown-item night-blue-text" href="{% url 'internet_page' %}">Internet</a>
+                        <a class="dropdown-item night-blue-text" href="#">TV</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'contact_page' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="ml-auto">
+            <i class="fas fa-comment-dots fa-lg"></i>
+        </a>
+    </nav>
+
+    <div class="container container-bg">
+        <h2>DELTA COMMUNICATION</h2>
+        <p>SPEED LIKE NEVER BEFORE<br>
+            TAKING YOUR SURFING EXPERIENCE TO A WHOLE NEW LEVEL</p>
+    </div>
+
+    <div class="container container-bg2">
+        <p id="scroll-text" class="hidden-text">Blast into space with these rocket speeds</p>
+    </div>
+
+    <!-- Live chat popup -->
+    <div id="live-chat-popup" class="chat-popup">
+        <div class="chat-popup-content">
+            <!-- Add your chat interface here -->
+            <h4>Welcome to Live Chat Support</h4>
+            <p>Our team is here to help you. Please enter your message below:</p>
+            <textarea id="chat-message" rows="4" placeholder="Type your message..."></textarea>
+            <button id="send-button">Send</button>
+            <span id="close-chat" class="close-popup">&times;</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 Delta Communication. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chatButton = document.querySelector(".fa-comment-dots");
+            var chatPopup = document.getElementById("live-chat-popup");
+            var closeChat = document.getElementById("close-chat");
+    
+            chatButton.addEventListener("click", function() {
+                chatPopup.style.display = "block";
+            });
+    
+            closeChat.addEventListener("click", function() {
+                chatPopup.style.display = "none";
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var container = document.querySelector(".container-bg");
+            var windowHeight = window.innerHeight;
+            var containerHeight = container.offsetHeight;
+            var isScrolledDown = false;
+    
+            function updateContainerState() {
+                var containerPosition = container.getBoundingClientRect().top;
+    
+                if (containerPosition - windowHeight + containerHeight <= 0) {
+                    if (!isScrolledDown) {
+                        container.classList.add("container-zoom", "zoomed");
+                        isScrolledDown = true;
+                    }
+                } else {
+                    if (isScrolledDown) {
+                        container.classList.remove("zoomed");
+                        isScrolledDown = false;
+                    }
+                }
+            }
+    
+            window.addEventListener("scroll", function() {
+                updateContainerState();
+            });
+    
+            window.addEventListener("wheel", function(event) {
+                if (event.deltaY < 0) {
+                    // Scrolling up
+                    container.classList.remove("zoomed");
+                    isScrolledDown = false;
+                }
+            });
+        });
+    </script>
+     
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

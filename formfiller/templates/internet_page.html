@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Your custom styles go here */
+        body {
+            font-family: 'Sedgwick Ave Display', cursive;
+            background-color: #001F3F;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #001F3F; /* Change to your desired night blue color */
+
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: #95E0E8;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #DAD8C9;
+            margin-bottom: 10px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .night-blue-bg {
+            background-color: #001F3F;
+            color: white;
+        }
+
+        .container-bg {
+            background-image: url('{% static "cable.gif" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 220px;
+            max-width: 1200px; /* Adjust the maximum width */
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        .container-bg2 {
+            background-image: url('{% static "speed.gif" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 220px;
+            max-width: 1200px; /* Adjust the maximum width */
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        .container p {
+            color: #777;
+        }
+
+        .dropdown-menu{
+
+            background-color: white;
+        }
+
+        .container i {
+            color: #57A773;
+        }
+
+        .night-blue-text {
+            color: #001F3F;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light night-blue-bg fixed-top">
+        <a class="navbar-brand text-white" href="{% url 'home' %}">Delta Communication</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="productsDropdown">
+                        <a class="dropdown-item night-blue-text" href="{% url 'internet_page' %}">Internet</a>
+                        <a class="dropdown-item night-blue-text" href="#">TV</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'contact_page' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="ml-auto">
+            <i class="fas fa-comment-dots fa-lg"></i>
+        </a>
+    </nav>
+
+    <div class="container container-bg">
+        <h2>Delta Communication</h2>
+        <p>Home of high speed internet and cable tv</p>
+    </div>
+
+    <div class="container container-bg2">
+        <h2></h2>
+        <p>This is the second container. You can add your content here.</p>
+        <i class="fas fa-info-circle"></i>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
