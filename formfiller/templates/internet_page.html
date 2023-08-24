@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,64 +7,41 @@
     <style>
         /* Your custom styles go here */
         body {
-            font-family: 'Sedgwick Ave Display', cursive;
-            background-color: #001F3F;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
+            background-color: #001F3F;
             padding: 0;
         }
 
         .navbar {
-            margin-bottom: 20px;
-            background-color: #001F3F; /* Change to your desired night blue color */
-
+            margin-bottom: 20px; /* Change to your desired night blue color */
+            padding: 18px;
+            background-color: rgba(0, 31, 63, 0.5);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            font-style: bold;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            color: #95E0E8;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #999999 !important;
         }
 
-        .container h2 {
-            color: #DAD8C9;
-            margin-bottom: 10px;
-            font-family: 'Bebas Neue', sans-serif;
+        .navbar-nav .nav-link:hover {
+            color: #E02B20;
         }
 
+        .navbar-toggler {
+            background-color: #999999;
+        }
+
+        .navbar-toggler-icon{
+            background-color: #999999;
+        }
+        
         .night-blue-bg {
             background-color: #001F3F;
             color: white;
-        }
-
-        .container-bg {
-            background-image: url('{% static "cable.gif" %}');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            padding: 220px;
-            max-width: 1200px; /* Adjust the maximum width */
-            margin: 0 auto;
-            border-radius: 10px;
-        }
-
-        .container-bg2 {
-            background-image: url('{% static "speed.gif" %}');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            padding: 220px;
-            max-width: 1200px; /* Adjust the maximum width */
-            margin-bottom: 40px;
-            border-radius: 10px;
-        }
-        .container p {
-            color: #777;
         }
 
         .dropdown-menu{
@@ -73,20 +49,94 @@
             background-color: white;
         }
 
-        .container i {
-            color: #57A773;
+        .live-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            background-color: #FF3F00;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
-        .night-blue-text {
-            color: #001F3F;
+
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            z-index: 9999;
+            max-width: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-popup-content {
+            padding: 10px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #001F3F;
+            padding: 5px;
+            color: #fff;
+        }
+        
+        /* Style for the phone icon and number */
+        .phone-link {
+            color: #999999;
+            font-size: 18px;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        table-section {
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #FF3F00;
+            margin-bottom: 30px;
+            background-color: #000000;
+            border-color: #0033CC;
+        }
+
+        th, td {
+            border: 1px solid #FF3F00;
+            padding: 8px;
+            text-align: left;
+            color: #FFF;
+        }
+
+        th {
+            background-color: #0033CC;
         }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light night-blue-bg fixed-top">
-        <a class="navbar-brand text-white" href="{% url 'home' %}">Delta Communication</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand text-white" href="{% url 'home' %}">Delta</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -106,26 +156,127 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url 'contact_page' %}">Contact</a>
+                    <a class="nav-link text-light" href="{% url 'contact_page' %}">Contact Us</a>
                 </li>
             </ul>
+            <a href="tel:+923219244672" class="ml-auto phone-link">
+                <i class="fas fa-phone"></i> +923219244672
+            </a>
         </div>
-        <a href="#" class="ml-auto">
-            <i class="fas fa-comment-dots fa-lg"></i>
-        </a>
     </nav>
-
-    <div class="container container-bg">
-        <h2>Delta Communication</h2>
-        <p>Home of high speed internet and cable tv</p>
+    <a href="#" class="live-chat-button">
+        <i class="fas fa-comment-dots fa-lg"></i>
+    </a>
+    <div id="live-chat-popup" class="chat-popup">
+        <div class="chat-popup-content">
+            <!-- Add your chat interface here -->
+            <h4>Welcome to Live Chat Support</h4>
+            <p>Our team is here to help you. Please enter your message below:</p>
+            <textarea id="chat-message" rows="4" placeholder="Type your message..."></textarea>
+            <button id="send-button">Send</button>
+            <span id="close-chat" class="close-popup">&times;</span>
+        </div>
     </div>
 
-    <div class="container container-bg2">
-        <h2></h2>
-        <p>This is the second container. You can add your content here.</p>
-        <i class="fas fa-info-circle"></i>
-    </div>
+        <div class="table-section" style="margin-top: 100px;"> 
+            <table>
+                <tr>
+                    <th colspan="2">Red</th>
+                </tr>
+                <tr>
+                    <td>Speed:</td>
+                    <td>5 Mbps</td>
+                </tr>
+                <tr>
+                    <td>Web Streaming:</td>
+                    <td>Normal</td>
+                </tr>
+                <tr>
+                    <td>Dedicated:</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>HQ Video Uploading:</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Online Gaming:</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Video Chatting:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Prices Upto:</td>
+                    <td>Rs. 1513</td>
+                </tr>
+            </table>
 
+        <div class='table2'style="margin-top: 100px;">
+            <table>
+                <tr>
+                    <th colspan="2">Blue</th>
+                </tr>
+                <tr>
+                    <td>Speed:</td>
+                    <td>10 Mbps</td>
+                </tr>
+                <tr>
+                    <td>Web Streaming:</td>
+                    <td>Normal</td>
+                </tr>
+                <tr>
+                    <td>Dedicated:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>HQ Video Uploading:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Online Gaming:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Video Chatting:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Prices Upto:</td>
+                    <td>Rs. 2000</td>
+                </tr>
+            </table>
+        </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 Delta Communication. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chatButton = document.querySelector(".live-chat-button"); // Change the selector
+            var chatPopup = document.getElementById("live-chat-popup");
+            var closeChat = document.getElementById("close-chat");
+    
+            chatButton.addEventListener("click", function() { // Change the event listener
+                chatPopup.style.display = "block";
+            });
+    
+            closeChat.addEventListener("click", function() {
+                chatPopup.style.display = "none";
+            });
+        });
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
