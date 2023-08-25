@@ -1,18 +1,15 @@
 from django.shortcuts import render, redirect
+from .forms import UserFeedbackForm
 from .models import UserInput
 
 def input_form(request):
     if request.method == 'POST':
-        customer_name = request.POST.get('customer_name')
-        customer_complaint = request.POST.get('customer_complaint')
-        customer_email = request.POST.get('customer_email')
-        
-        # Create and save a new UserInput object
-        UserInput.objects.create(
-            customer_name=customer_name,
-            customer_complaint=customer_complaint,
-            customer_email=customer_email
-        )
+        form = UserFeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('thank_you_page')  # Redirect to a thank you page
+    else:
+        form = UserInput()
         # Redirect to the same page to clear the form
     
     return render(request, 'input_form.html')

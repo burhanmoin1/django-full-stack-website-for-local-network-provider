@@ -51,7 +51,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            padding: 180px;
+            padding: 198px;
             max-width: 1200px;
             margin: 0 auto;
             border-radius: 10px;
@@ -65,6 +65,65 @@
             text-align: center;
         }
 
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Adjust the height of your taskbar */
+            background-color: #333;
+        }
+        
+        .container-bg3 {
+            position: relative;
+            background-image: url('{% static "rocket.gif" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 240px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #001F3F;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation-delay: 1s; 
+            
+            /* Initial state - hidden below the taskbar */
+            transform: translateY(150%);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+
+        .container-bg3 h2.animate-text {
+            animation: zoomIn 1s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .container-bg3 h2 {
+            animation: zoomIn 1s ease forwards;
+        }
+        
+        .container-bg3.show {
+            /* Visible state - moved up to its normal position */
+            transform: translateY(-10%);
+            opacity: 1;
+        }
         .container h2 {
             color: #B0B5B9;
             margin-bottom: 10px;
@@ -77,7 +136,7 @@
         }
 
         .container p {
-            color: #848482;
+            color: #555555;
             font-family: 'Bebas Neue' , sans-serif;
             font-size: 20px; /* Increase font size */
             font-weight: 800; /* Add boldness */
@@ -148,7 +207,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            padding: 240px;
+            padding: 250px;
             max-width: 1200px;
             margin-bottom: 40px;
             border-radius: 10px;
@@ -156,23 +215,23 @@
             overflow: hidden;
             text-align: center;
         }
-        
 
         .scroll-text {
-            position: relative;
-            left: -50%;
+            /* Adjust the positioning and width */
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
             font-size: 35px;
-            color: #E5F1ED;
+            color: #AAAAAA;
             font-weight: 800;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-            white-space: nowrap; /* Prevent text from wrapping */
+            text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
             animation: slideRight 3.5s linear infinite;
             font-family: 'Josefin Sans', sans-serif;
             font-style: italic;
-            margin-bottom: 20px;
         }
-
-        
 
         @keyframes slideRight {
             0% {
@@ -212,7 +271,7 @@
 
         .container-zoom {
             opacity: 1;
-            transition: opacity 0.5s, transform 0.5s;
+            transition: opacity 0.7s, transform 0.7s;
         }
 
         /* ... Existing styles ... */
@@ -235,10 +294,87 @@
         /* Style for the phone icon and number */
         .phone-link {
             color: #999999;
-            font-size: 18px;
+            font-size: 14px;
             text-decoration: none;
             margin-left: 20px;
         }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .chat-message {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 10px;
+        }
+        
+        .user-message {
+            justify-content: flex-end;
+        }
+        
+        .agent-message {
+            justify-content: flex-start;
+        }
+        
+        .chat-message p {
+            background-color: #E5F1ED;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            max-width: 70%;
+        }
+        
+        /* Adjust the textarea and send button styles */
+        #chat-message {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        
+        #send-button {
+            background-color: #FF3F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        
+        #send-button:hover {
+            background-color: #FF5349;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        .bot {
+            background-color: #E5F1ED;
+        }
+
+        .user {
+            background-color: #FFD700;
+            align-self: flex-end;
+        }
+
 
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
@@ -272,6 +408,9 @@
             <a href="tel:+923219244672" class="ml-auto phone-link">
                 <i class="fas fa-phone"></i> +923219244672
             </a>
+            <a href="mailto:deltacn@gmail.com" class="ml-2 phone-link">
+                <i class="far fa-envelope"></i> deltacn@gmail.com
+            </a>
         </div>
     </nav>
 
@@ -283,40 +422,167 @@
 
     <div class="container container-bg2">
         <div class="scroll-text">BLAST INTO SPACE WITH THESE ROCKET SPEEDS</div>
-        <button class="btn btn-primary custom-button">See packages</button>
-    </div>
+        <!---<button class="btn btn-primary custom-button"> <a href="{% url 'internet_page' %}" class="text-white" style="text-decoration: none;">See packages</a>
+        </button>-->
+    </div>    
+
+    <div class="container container-bg3">
+        <h2>To the moon</h2>
+    </div>    
+
     <!-- Live chat popup -->
-    <a href="#" class="live-chat-button">
+    <button type="button" class="live-chat-button">
         <i class="fas fa-comment-dots fa-lg"></i>
-    </a>
+    </button>
+    
     <div id="live-chat-popup" class="chat-popup">
         <div class="chat-popup-content">
             <!-- Add your chat interface here -->
-            <h4>Welcome to Live Chat Support</h4>
-            <p>Our team is here to help you. Please enter your message below:</p>
+            <div id="chat-messages"></div>
             <textarea id="chat-message" rows="4" placeholder="Type your message..."></textarea>
             <button id="send-button">Send</button>
             <span id="close-chat" class="close-popup">&times;</span>
         </div>
     </div>
-
     <footer class="footer">
         <p>&copy; 2023 Delta Communication. All rights reserved.</p>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var chatButton = document.querySelector(".live-chat-button"); // Change the selector
+            var chatButton = document.querySelector(".live-chat-button");
             var chatPopup = document.getElementById("live-chat-popup");
+            var chatMessages = document.getElementById("chat-messages");
+            var chatMessageInput = document.getElementById("chat-message");
+            var sendButton = document.getElementById("send-button");
             var closeChat = document.getElementById("close-chat");
-    
-            chatButton.addEventListener("click", function() { // Change the event listener
-                chatPopup.style.display = "block";
+        
+            var conversationIndex = 0;
+            var conversation = [
+            {
+                role: "bot",
+                message: "Hello! How can I assist you today?"
+            },
+            {
+                role: "user",
+                message: "Tell me about your internet packages."
+            },
+            {
+                role: "bot",
+                message: "Of course! We offer a range of internet packages to suit different needs. Our packages start from 5 Mbps and go up to 100 Mbps. Which speed are you interested in?"
+            },
+            {
+                role: "user",
+                message: "I'm looking for a package with at least 50 Mbps."
+            },
+            {
+                role: "bot",
+                message: "Great choice! We have packages with speeds of 50 Mbps and above. Would you like to know more about our pricing for those packages?"
+            },
+            {
+                role: "user",
+                message: "Yes, please provide me with the pricing details."
+            },
+            {
+                role: "bot",
+                message: "Certainly! Our 50 Mbps package starts at $49.99 per month, the 75 Mbps package is $69.99 per month, and the 100 Mbps package is $89.99 per month. Keep in mind that prices may vary based on your location."
+            },
+                // Add more conversation steps as needed
+            ];
+        
+            function displayMessage(role, message) {
+                var messageDiv = document.createElement("div");
+                messageDiv.className = "chat-message " + role;
+                messageDiv.textContent = message;
+                chatMessages.appendChild(messageDiv);
+        
+                // Scroll to the bottom of the chat
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        
+            function processUserMessage(userMessage) {
+                var botReply = "";
+        
+                // Process the user's message and determine bot's reply
+                if (userMessage.toLowerCase().includes("hello")) {
+                    botReply = "Hello! How can I assist you today?";
+                } else if (userMessage.toLowerCase().includes("packages")) {
+                    botReply = "Sure, we offer various packages. What speed are you looking for?";
+                } else if (userMessage.toLowerCase().includes("speed")) {
+                    botReply = "Great! We have packages with speeds ranging from 5 Mbps to 100 Mbps. Which package are you interested in?";
+                } else {
+                    botReply = "I'm sorry, I couldn't understand that. Please provide more details.";
+                }
+        
+                return botReply;
+            }
+
+            function handleUserMessage() {
+                var userMessage = chatMessageInput.value;
+                if (userMessage.trim() !== "") { // Check if the message is not empty or only spaces
+                    displayMessage("user", userMessage);
+                    var botReply = processUserMessage(userMessage);
+                    displayMessage("bot", botReply);
+                }
+                chatMessageInput.value = "";
+            }
+        
+            // ... Existing code ...
+        
+            chatMessageInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter" && !event.shiftKey) { // Send message if Enter is pressed without Shift key
+                    event.preventDefault();
+                    handleUserMessage();
+                }
             });
-    
+        
+            function handleUserMessage() {
+                var userMessage = chatMessageInput.value;
+                displayMessage("user", userMessage);
+        
+                var botReply = processUserMessage(userMessage);
+                displayMessage("bot", botReply);
+        
+                chatMessageInput.value = "";
+            }
+        
+            sendButton.addEventListener("click", function() {
+                handleUserMessage();
+            });
+        
+            chatMessageInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Prevent form submission
+                    handleUserMessage();
+                }
+            });
+        
             closeChat.addEventListener("click", function() {
                 chatPopup.style.display = "none";
             });
+        
+            chatButton.addEventListener("click", function() {
+                chatPopup.style.display = "block";
+                chatMessageInput.focus();
+            });
+        
+            // Initiate the conversation when the page loads
+            if (conversation.length > 0) {
+                displayMessage("bot", conversation[0].message);
+                conversationIndex++;
+            }
+        });
+        
+
+        document.addEventListener("scroll", function() {
+            var container = document.querySelector(".container-bg3");
+            var triggerPosition = window.innerHeight / 2; // Adjust the trigger position as needed
+        
+            if (window.scrollY > triggerPosition) {
+                container.classList.add("show");
+            } else {
+                container.classList.remove("show");
+            }
         });
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -352,6 +618,24 @@
                     isScrolledDown = false;
                 }
             });
+        });
+        document.addEventListener("scroll", function() {
+            var container = document.querySelector(".container-bg3");
+            var triggerPosition = window.innerHeight / 2; // Adjust the trigger position as needed
+        
+            if (window.scrollY > triggerPosition) {
+                container.classList.add("show");
+        
+                var textElement = container.querySelector("h2");
+                textElement.classList.remove("animate-text");
+        
+                // Trigger reflow to reset animation
+                void textElement.offsetWidth;
+        
+                textElement.classList.add("animate-text");
+            } else {
+                container.classList.remove("show");
+            }
         });
 
     </script>

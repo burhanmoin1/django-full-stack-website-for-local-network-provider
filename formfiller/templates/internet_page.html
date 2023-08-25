@@ -67,7 +67,6 @@
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
-
         .chat-popup {
             display: none;
             position: fixed;
@@ -95,7 +94,7 @@
         .footer {
             text-align: center;
             background-color: #001F3F;
-            padding: 5px;
+            padding: 30px;
             color: #fff;
         }
         
@@ -107,29 +106,98 @@
             margin-left: 20px;
         }
 
-        table-section {
+        .table-section {
             margin-top: 50px;
+            display: flex;
+            gap: 30px;
         }
 
-        table {
-            width: 100%;
+        /* Style for the individual table */
+        .custom-table {
+            width: 35%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: #000;
+            border: 2px solid #FF3F00;
+            color: white;
+            border-color: #AA0000;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 0;
+            padding: 10px;
             border-collapse: collapse;
             border: 2px solid #FF3F00;
-            margin-bottom: 30px;
-            background-color: #000000;
-            border-color: #0033CC;
         }
 
-        th, td {
-            border: 1px solid #FF3F00;
-            padding: 8px;
-            text-align: left;
-            color: #FFF;
+        .table-section .custom-table-negative-margin {
+            margin-right: -10px; /* Adjust the negative margin as needed */
         }
 
-        th {
-            background-color: #0033CC;
+        /* Style for the table header */
+        .custom-table th {
+            background-color: #AA0000;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
         }
+
+        /* Style for table rows */
+        .custom-table tr {
+            background-color: #111;
+            border-bottom: 1px solid #FF3F00;
+        }
+
+        .table-section .custom-table-shadow {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for table data cells */
+        .custom-table td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Style for alternating row background */
+        .custom-table tr:nth-child(even) {
+            background-color: #222;
+        }
+
+        .table-section .custom-table-blue {
+            background-color: #00AAAA;
+        }
+
+        .table-section .custom-table-blue th {
+            background-color: #00AAAA;
+        }
+
+        /* Style for horizontally shorter tables */
+        .table-section .custom-table-short {
+            width: 40%; /* Adjust the width as needed */
+            margin-right: 20px;
+        }
+
+        .custom-table-short {
+            height: 100px; /* Adjust the height of the tables */
+        }
+        .custom-table-blue {
+            background-color: #00AAAA;
+        }
+        
+        .custom-table-blue th {
+            background-color: #00AAAA;
+        }
+        
+        .custom-table-green {
+            background-color: #008000;
+        }
+        
+        .custom-table-green th {
+            background-color: #008000;
+        }
+        
+    </style>
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
@@ -162,6 +230,9 @@
             <a href="tel:+923219244672" class="ml-auto phone-link">
                 <i class="fas fa-phone"></i> +923219244672
             </a>
+            <a href="mailto:deltacn@gmail.com" class="ml-2 phone-link">
+                <i class="far fa-envelope"></i> deltacn@gmail.com
+            </a>
         </div>
     </nav>
     <a href="#" class="live-chat-button">
@@ -178,8 +249,8 @@
         </div>
     </div>
 
-        <div class="table-section" style="margin-top: 100px;"> 
-            <table>
+    <div class="table-section">
+        <table class="custom-table custom-table-shadow custom-table-short">
                 <tr>
                     <th colspan="2">Red</th>
                 </tr>
@@ -216,9 +287,7 @@
                     <td>Rs. 1513</td>
                 </tr>
             </table>
-
-        <div class='table2'style="margin-top: 100px;">
-            <table>
+            <table class="custom-table custom-table-shadow custom-table-short custom-table-blue">
                 <tr>
                     <th colspan="2">Blue</th>
                 </tr>
@@ -253,6 +322,43 @@
                 <tr>
                     <td>Prices Upto:</td>
                     <td>Rs. 2000</td>
+                </tr>
+            </table>
+            <table class="custom-table custom-table-shadow custom-table-short custom-table-green">
+                <tr>
+                    <th colspan="2">Green</th>
+                </tr>
+                <tr>
+                    <td>Speed:</td>
+                    <td>20 Mbps</td>
+                </tr>
+                <tr>
+                    <td>Web Streaming:</td>
+                    <td>Normal</td>
+                </tr>
+                <tr>
+                    <td>Dedicated:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>HQ Video Uploading:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Online Gaming:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Video Chatting:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Prices Upto:</td>
+                    <td>Rs. 3000</td>
                 </tr>
             </table>
         </div>

@@ -45,6 +45,49 @@
             margin-bottom: 5px;
         }
 
+        .live-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            background-color: #FF3F00;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            z-index: 9999;
+            max-width: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-popup-content {
+            padding: 10px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
         input[type="text"],
         input[type="email"],
         textarea {
@@ -103,11 +146,28 @@
                     <a class="nav-link text-light" href="#">Contact Us</a>
                 </li>
             </ul>
+            <a href="tel:+923219244672" class="ml-auto phone-link">
+                <i class="fas fa-phone"></i> +923219244672
+            </a>
+            <a href="mailto:deltacn@gmail.com" class="ml-2 phone-link">
+                <i class="far fa-envelope"></i> deltacn@gmail.com
+            </a>
         </div>
-        <a href="#" class="ml-auto">
-            <i class="fas fa-comment-dots fa-lg"></i>
-        </a>
     </nav>
+
+    <a href="#" class="live-chat-button">
+        <i class="fas fa-comment-dots fa-lg"></i>
+    </a>
+    <div id="live-chat-popup" class="chat-popup">
+        <div class="chat-popup-content">
+            <!-- Add your chat interface here -->
+            <h4>Welcome to Live Chat Support</h4>
+            <p>Our team is here to help you. Please enter your message below:</p>
+            <textarea id="chat-message" rows="4" placeholder="Type your message..."></textarea>
+            <button id="send-button">Send</button>
+            <span id="close-chat" class="close-popup">&times;</span>
+        </div>
+    </div>
 
     <form method="post">
         {% csrf_token %}
