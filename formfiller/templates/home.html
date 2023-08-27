@@ -81,14 +81,14 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            padding: 240px;
+            padding: 180px;
             max-width: 1200px;
             font-size: 12px !important; 
             margin: 0 auto;
             border-radius: 10px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
             background-color: #001F3F;
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -208,7 +208,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            padding: 100px 400px 100px;
+            padding: 250px;
             max-width: 1200px;
             margin-bottom: 40px;
             border-radius: 10px;
@@ -217,55 +217,63 @@
             text-align: center;
         }
 
-        .scroll-text {
-            /* Adjust the positioning and width */
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            font-size: 35px;
-            color: #AAAAAA;
-            font-weight: 800;
-            text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
-            white-space: nowrap;
-            animation: slideRight 3.5s linear infinite;
-            font-family: 'Josefin Sans', sans-serif;
-            font-style: italic;
-        }
+        /* Additional CSS for rotating packages */
 
-        @keyframes slideRight {
+        .rotating-packages {
+            display: flex;
+            width: 200%;
+            height: 250px; /* Adjust the height as needed */
+        }
+        
+        .package {
+            flex: 0 0 auto;
+            width: 300px; /* Adjust the width as needed */
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.5s;
+        }
+        
+        /* Add this to style the tables within the packages */
+        .package table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        
+        .package th,
+        .package td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .package th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        /* Style for the rotating packages container */
+        .rotating-packages {
+            position: relative;
+            animation: loopPackages 5s linear infinite; /* Adjust duration as needed */
+        }
+        
+        @keyframes loopPackages {
             0% {
-                transform: translateX(-100%);
+                transform: translateX(0);
             }
             100% {
-                transform: translateX(100%);
+                transform: translateX(-100%);
             }
         }
         
-        .custom-button {
-            position: absolute;
-            top: 60%; /* Adjust the top position */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-            font-weight: 600;
-            padding: 10px 20px;
-            background-color: #FF3F00; /* Match the text color */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-shadow: 8px 8px 5px rgba(0, 0, 0, 0.5); /* Match the text shadow */
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Add a shadow to the button */
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
-    
-        /* Adjust button hover effect */
-        .custom-button:hover {
-            background-color: #FF5349; /* Darken the color on hover */
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4); /* Slightly increase the shadow on hover */
-        }
     
         
         /* Existing styles */
@@ -327,77 +335,6 @@
             max-width: 70%;
         }
 
-        /* Add this CSS to your existing styles */
-        /* Add this CSS to your existing styles */
-
-        .transparent-table-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        .transparent-table {
-            width: 70%; /* Adjust the width as needed */
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.3); /* Adjust the background color and opacity */
-            border-radius: 10px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .transparent-table td {
-            padding: 10px;
-            border-bottom: 1px solid #ccc; /* Add a light gray bottom border */
-        }
-
-        .transparent-table tr:last-child td {
-            border-bottom: none; /* Remove bottom border for the last row */
-        }
-        
-        .transparent-table th {
-            background-color: #001F3F; /* Blue background color */
-            color: white; /* White text color */
-            font-weight: bold; /* Thicken the text */
-            padding: 10px;
-            text-align: left;
-            border-bottom: 2px solid white; /* Add a white bottom border */
-        }
-        
-        .transparent-table-content {
-            font-size: 16px;
-            color: #555555; /* Change the text color */
-        }
-        
-        .transparent-table-link {
-            color: #FF3F00; /* Change the link color */
-            text-decoration: underline;
-            cursor: pointer;
-        }        
-        
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-self: center; /* Adjust the alignment as needed */
-            margin-top: 80px; 
-        }
-        
-        .custom-button {
-            font-size: 16px;
-            padding: 8px 16px;
-            background-color: #FF3F00;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .custom-button:hover {
-            background-color: #FF5349;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
-        }
-        
-        
         /* Adjust the textarea and send button styles */
         #chat-message {
             width: 100%;
@@ -508,36 +445,126 @@
     </div>
 
     <div class="container container-bg2">
-        <table class="transparent-table">
-            <tr>
-                <th>Package Name</th>
-                <th>Speed Availability</th>
-                <th>Price</th>
-                <th>Sign Up</th>
-            </tr>
-            <tr>
-                <td>Basic Package</td>
-                <td>50 Mbps</td>
-                <td>$49.99/mo</td>
-                <td><a href="{% url 'internet_page' %}?package=basic">Sign Up</a></td>
-            </tr>
-            <tr>
-                <td>Standard Package</td>
-                <td>75 Mbps</td>
-                <td>$69.99/mo</td>
-                <td><a href="{% url 'internet_page' %}?package=standard">Sign Up</a></td>
-            </tr>
-            <tr>
-                <td>Premium Package</td>
-                <td>100 Mbps</td>
-                <td>$89.99/mo</td>
-                <td><a href="{% url 'internet_page' %}?package=premium">Sign Up</a></td>
-            </tr>
-        </table>
+        <div class="rotating-packages">
+            <div class="package">
+                <table>
+                    <tr>
+                        <th>Package</th>
+                        <td>Basic</td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <td>10 Mbps</td>
+                    </tr>
+                    <tr>
+                        <th>Availability</th>
+                        <td>M.A Society, KDA</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>Rs. 1500/month</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="{% url 'internet_page' %}" class="btn btn-primary custom-button">Sign Up</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="package">
+                <table>
+                    <tr>
+                        <th>Package</th>
+                        <td>Thunder</td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <td>22 Mbps</td>
+                    </tr>
+                    <tr>
+                        <th>Availability</th>
+                        <td>Nationwide</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>Rs. 2000/month</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="{% url 'internet_page' %}" class="btn btn-primary custom-button">Sign Up</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="package">
+                <table>
+                    <tr>
+                        <th>Package</th>
+                        <td>Storm</td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <td>30 Mbps</td>
+                    </tr>
+                    <tr>
+                        <th>Availability</th>
+                        <td>M.A Society, KDA</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>Rs. 3000/month</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="{% url 'internet_page' %}" class="btn btn-primary custom-button">Sign Up</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="package">
+                <table>
+                    <tr>
+                        <th>Package</th>
+                        <td>Flash</td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <td>50 Mbps</td>
+                    </tr>
+                    <tr>
+                        <th>Availability</th>
+                        <td>M.A Society, KDA</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>Rs. 5000/month</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="{% url 'internet_page' %}" class="btn btn-primary custom-button">Sign Up</a></td>
+                    </tr>
+                </table>
+            </div>
+        <div class="package">
+                <table>
+                    <tr>
+                        <th>Package Name</th>
+                        <td>Void</td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <td>100 Mbps</td>
+                    </tr>
+                    <tr>
+                        <th>Availability</th>
+                        <td>M.A Society, KDA</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>Rs. 9000/month</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="{% url 'internet_page' %}" class="btn btn-primary custom-button">Sign Up</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
     
     
-
     <div class="container container-bg3">
         <h2>TAKING YOU PLACES YOU HAVE NEVER BEEN</h2>
     </div>    
@@ -561,6 +588,7 @@
     </footer>
 
     <script>
+        
         document.addEventListener("DOMContentLoaded", function() {
             var chatButton = document.querySelector(".live-chat-button");
             var chatPopup = document.getElementById("live-chat-popup");
@@ -750,6 +778,42 @@
                 container.classList.remove("show");
             }
         });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            function rotatePackages() {
+                const packagesContainer = document.querySelector(".rotating-packages");
+                const packages = packagesContainer.querySelectorAll(".package");
+                const packageWidth = packages[0].offsetWidth;
+                
+                const clonedPackages = Array.from(packages).map((packageElement) => {
+                    return packageElement.cloneNode(true);
+                });
+            
+                clonedPackages.forEach((clonedPackage) => {
+                    packagesContainer.appendChild(clonedPackage);
+                });
+            
+                // Calculate total width of all packages
+                const totalWidth = packageWidth * clonedPackages.length;
+                let currentPosition = 0;
+            
+                function updatePosition() {
+                    currentPosition -= 1;
+                    if (currentPosition <= -totalWidth) {
+                        currentPosition = 0;
+                    }
+                    packagesContainer.style.transform = `translateX(${currentPosition}px)`;
+                    requestAnimationFrame(updatePosition);
+                }
+            
+                updatePosition();
+            }
+            
+            rotatePackages();
+            
+        });
+        
+        
 
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
