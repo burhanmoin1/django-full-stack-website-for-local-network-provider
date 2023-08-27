@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,14 @@
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            background-color: #001F3F;
+            background-color: #FFFFFF;
             padding: 0;
         }
 
         .navbar {
             margin-bottom: 20px; /* Change to your desired night blue color */
-            padding: 18px;
-            background-color: rgba(0, 31, 63, 0.5);
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 1);
             font-family: 'Josefin Sans', sans-serif;
             font-size: 18px;
             font-weight: 700;
@@ -95,26 +96,24 @@
             text-align: center;
             background-color: #001F3F;
             padding: 30px;
-            color: #fff;
+            color: #000000;
         }
         
         /* Style for the phone icon and number */
         .phone-link {
             color: #999999;
-            font-size: 18px;
+            font-size: 14px;
             text-decoration: none;
             margin-left: 20px;
         }
 
+        
         .table-section {
             margin-top: 50px;
-            display: flex;
-            gap: 30px;
         }
 
-        /* Style for the individual table */
         .custom-table {
-            width: 35%;
+            width: calc(22% - 10px); /* Adjust the width as needed */
             border-collapse: collapse;
             margin-bottom: 30px;
             background-color: #000;
@@ -124,12 +123,8 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            margin: 0;
-            padding: 10px;
-            border-collapse: collapse;
-            border: 2px solid #FF3F00;
+            margin-right: 40px;
         }
-
         .table-section .custom-table-negative-margin {
             margin-right: -10px; /* Adjust the negative margin as needed */
         }
@@ -172,6 +167,13 @@
             background-color: #00AAAA;
         }
 
+        .footer {
+            text-align: center;
+            background-color: #000000;
+            padding: 5px;
+            color: #fff;
+        }
+
         /* Style for horizontally shorter tables */
         .table-section .custom-table-short {
             width: 40%; /* Adjust the width as needed */
@@ -196,6 +198,18 @@
         .custom-table-green th {
             background-color: #008000;
         }
+
+        /* Style for the logo image */
+        .navbar-brand img.logo-img {
+            max-height: 60px; /* Adjust the maximum height of the logo */
+            max-width: 500px;
+            padding-right: 20px;
+            margin-left: 10px; /* Add some right padding to separate from other elements */
+        }
+        /* Additional styles to align navbar items vertically */
+        .navbar-nav {
+            align-items: center;
+        }
         
     </style>
     </style>
@@ -204,7 +218,10 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand text-white" href="{% url 'home' %}">Delta</a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'delta logo.jpg' %}" alt="Logo" class="logo-img">
+        </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -249,8 +266,9 @@
         </div>
     </div>
 
-    <div class="table-section">
-        <table class="custom-table custom-table-shadow custom-table-short">
+    <div class="container">
+        <div class="table-section d-flex flex-wrap justify-content-between">
+            <table class="custom-table custom-table-shadow custom-table-short">
                 <tr>
                     <th colspan="2">Red</th>
                 </tr>
@@ -362,6 +380,7 @@
                 </tr>
             </table>
         </div>
+    </div>
 
     <footer class="footer">
         <p>&copy; 2023 Delta Communication. All rights reserved.</p>

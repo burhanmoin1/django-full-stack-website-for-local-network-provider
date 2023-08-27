@@ -10,14 +10,14 @@
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            background-color: #001F3F;
+            background-color: #FFFFFF;
             padding: 0;
         }
 
         .navbar {
             margin-bottom: 20px; /* Change to your desired night blue color */
-            padding: 18px;
-            background-color: rgba(0, 31, 63, 0.5);
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 1);
             font-family: 'Josefin Sans', sans-serif;
             font-size: 18px;
             font-weight: 700;
@@ -83,6 +83,7 @@
             background-position: center center;
             padding: 240px;
             max-width: 1200px;
+            font-size: 12px !important; 
             margin: 0 auto;
             border-radius: 10px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -91,7 +92,7 @@
             margin: 0 auto;
             border-radius: 10px;
             margin-bottom: 20px;
-            text-align: center;
+            text-align: left;
             animation-delay: 1s; 
             
             /* Initial state - hidden below the taskbar */
@@ -207,7 +208,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            padding: 250px;
+            padding: 100px 400px 100px;
             max-width: 1200px;
             margin-bottom: 40px;
             border-radius: 10px;
@@ -270,8 +271,8 @@
         /* Existing styles */
 
         .container-zoom {
-            opacity: 1;
-            transition: opacity 0.7s, transform 0.7s;
+            opacity: 3;
+            transition: opacity 2s, transform 1s;
         }
 
         /* ... Existing styles ... */
@@ -286,7 +287,7 @@
 
         .footer {
             text-align: center;
-            background-color: #001F3F;
+            background-color: #000000;
             padding: 5px;
             color: #fff;
         }
@@ -325,6 +326,77 @@
             font-size: 14px;
             max-width: 70%;
         }
+
+        /* Add this CSS to your existing styles */
+        /* Add this CSS to your existing styles */
+
+        .transparent-table-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .transparent-table {
+            width: 70%; /* Adjust the width as needed */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.3); /* Adjust the background color and opacity */
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .transparent-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc; /* Add a light gray bottom border */
+        }
+
+        .transparent-table tr:last-child td {
+            border-bottom: none; /* Remove bottom border for the last row */
+        }
+        
+        .transparent-table th {
+            background-color: #001F3F; /* Blue background color */
+            color: white; /* White text color */
+            font-weight: bold; /* Thicken the text */
+            padding: 10px;
+            text-align: left;
+            border-bottom: 2px solid white; /* Add a white bottom border */
+        }
+        
+        .transparent-table-content {
+            font-size: 16px;
+            color: #555555; /* Change the text color */
+        }
+        
+        .transparent-table-link {
+            color: #FF3F00; /* Change the link color */
+            text-decoration: underline;
+            cursor: pointer;
+        }        
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-self: center; /* Adjust the alignment as needed */
+            margin-top: 80px; 
+        }
+        
+        .custom-button {
+            font-size: 16px;
+            padding: 8px 16px;
+            background-color: #FF3F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .custom-button:hover {
+            background-color: #FF5349;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+        }
+        
         
         /* Adjust the textarea and send button styles */
         #chat-message {
@@ -375,14 +447,29 @@
             align-self: flex-end;
         }
 
-
+        /* Style for the logo image */
+        .navbar-brand img.logo-img {
+            max-height: 60px; /* Adjust the maximum height of the logo */
+            max-width: 500px;
+            padding-right: 20px;
+            margin-left: 10px; /* Add some right padding to separate from other elements */
+        }
+    
+        /* Additional styles to align navbar items vertically */
+        .navbar-nav {
+            align-items: center;
+        }
+        
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <a class="navbar-brand text-white" href="{% url 'home' %}">Delta</a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'delta logo.jpg' %}" alt="Logo" class="logo-img">
+        </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -421,13 +508,38 @@
     </div>
 
     <div class="container container-bg2">
-        <div class="scroll-text">BLAST INTO SPACE WITH THESE ROCKET SPEEDS</div>
-        <!---<button class="btn btn-primary custom-button"> <a href="{% url 'internet_page' %}" class="text-white" style="text-decoration: none;">See packages</a>
-        </button>-->
-    </div>    
+        <table class="transparent-table">
+            <tr>
+                <th>Package Name</th>
+                <th>Speed Availability</th>
+                <th>Price</th>
+                <th>Sign Up</th>
+            </tr>
+            <tr>
+                <td>Basic Package</td>
+                <td>50 Mbps</td>
+                <td>$49.99/mo</td>
+                <td><a href="{% url 'internet_page' %}?package=basic">Sign Up</a></td>
+            </tr>
+            <tr>
+                <td>Standard Package</td>
+                <td>75 Mbps</td>
+                <td>$69.99/mo</td>
+                <td><a href="{% url 'internet_page' %}?package=standard">Sign Up</a></td>
+            </tr>
+            <tr>
+                <td>Premium Package</td>
+                <td>100 Mbps</td>
+                <td>$89.99/mo</td>
+                <td><a href="{% url 'internet_page' %}?package=premium">Sign Up</a></td>
+            </tr>
+        </table>
+    </div>
+    
+    
 
     <div class="container container-bg3">
-        <h2>To the moon</h2>
+        <h2>TAKING YOU PLACES YOU HAVE NEVER BEEN</h2>
     </div>    
 
     <!-- Live chat popup -->
@@ -590,6 +702,7 @@
             var windowHeight = window.innerHeight;
             var containerHeight = container.offsetHeight;
             var isScrolledDown = false;
+
     
             function updateContainerState() {
                 var containerPosition = container.getBoundingClientRect().top;
