@@ -1,1 +1,1 @@
-"# django-full-stack-website-for-local-network-provider" 
+Creating a web application for a local network provider. The web app is based on django as the backend and html, css and JS on the frontend. PostgreSQL is being used as the database. All of the code is written from scratch and made by me Burhan Moin. This is my first full stack web development project.
