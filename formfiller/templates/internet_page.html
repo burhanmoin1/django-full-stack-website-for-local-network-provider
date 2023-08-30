@@ -132,7 +132,7 @@
         /* Style for the table header */
         .custom-table th {
             background-color: #AA0000;
-            color: white;
+            color: silver;
             padding: 15px;
             font-weight: bold;
             text-align: center;
@@ -159,13 +159,6 @@
             background-color: #222;
         }
 
-        .table-section .custom-table-blue {
-            background-color: #00AAAA;
-        }
-
-        .table-section .custom-table-blue th {
-            background-color: #00AAAA;
-        }
 
         .footer {
             text-align: center;
@@ -199,6 +192,22 @@
             background-color: #008000;
         }
 
+        .custom-table-yellow {
+            background-color: #FFFF55;
+        }
+        
+        .custom-table-yellow th {
+            background-color: #FFFF55;
+        }
+
+        .custom-table-purple {
+            background-color: #AA00AA;
+        }
+        
+        .custom-table-purple th {
+            background-color: #AA00AA;
+        }
+
         /* Style for the logo image */
         .navbar-brand img.logo-img {
             max-height: 60px; /* Adjust the maximum height of the logo */
@@ -209,6 +218,12 @@
         /* Additional styles to align navbar items vertically */
         .navbar-nav {
             align-items: center;
+        }
+
+        #flash{
+
+            background-color: yellow;
+
         }
         
     </style>
@@ -236,7 +251,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="productsDropdown">
                         <a class="dropdown-item night-blue-text" href="{% url 'internet_page' %}">Internet</a>
-                        <a class="dropdown-item night-blue-text" href="#">TV</a>
+                        <a class="dropdown-item night-blue-text" href="{% url 'tv_page'%}">TV</a>
                     </div>
                 </li>
                 
@@ -270,44 +285,7 @@
         <div class="table-section d-flex flex-wrap justify-content-between">
             <table class="custom-table custom-table-shadow custom-table-short">
                 <tr>
-                    <th colspan="2">Red</th>
-                </tr>
-                <tr>
-                    <td>Speed:</td>
-                    <td>5 Mbps</td>
-                </tr>
-                <tr>
-                    <td>Web Streaming:</td>
-                    <td>Normal</td>
-                </tr>
-                <tr>
-                    <td>Dedicated:</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>HQ Video Uploading:</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>Online Gaming:</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>Video Chatting:</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>Availability:</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>Prices Upto:</td>
-                    <td>Rs. 1513</td>
-                </tr>
-            </table>
-            <table class="custom-table custom-table-shadow custom-table-short custom-table-blue">
-                <tr>
-                    <th colspan="2">Blue</th>
+                    <th colspan="2">Basic</th>
                 </tr>
                 <tr>
                     <td>Speed:</td>
@@ -319,15 +297,15 @@
                 </tr>
                 <tr>
                     <td>Dedicated:</td>
-                    <td>Yes</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>HQ Video Uploading:</td>
-                    <td>Yes</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Online Gaming:</td>
-                    <td>Yes</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Video Chatting:</td>
@@ -339,12 +317,17 @@
                 </tr>
                 <tr>
                     <td>Prices Upto:</td>
-                    <td>Rs. 2000</td>
+                    <td>Rs. 1500</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="{% url 'submit_signup' %}" class="btn btn-primary">Sign Up</a>
+                    </td>
                 </tr>
             </table>
-            <table class="custom-table custom-table-shadow custom-table-short custom-table-green">
+            <table class="custom-table custom-table-shadow custom-table-short custom-table-blue">
                 <tr>
-                    <th colspan="2">Green</th>
+                    <th colspan="2">Thunder</th>
                 </tr>
                 <tr>
                     <td>Speed:</td>
@@ -376,13 +359,145 @@
                 </tr>
                 <tr>
                     <td>Prices Upto:</td>
+                    <td>Rs. 2000</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="{% url 'submit_signup' %}" class="btn btn-primary">Sign Up</a>
+                    </td>
+                </tr>
+            </table>
+            <table class="custom-table custom-table-shadow custom-table-short custom-table-green">
+                <tr>
+                    <th colspan="2">Storm</th>
+                </tr>
+                <tr>
+                    <td>Speed:</td>
+                    <td>30 Mbps</td>
+                </tr>
+                <tr>
+                    <td>Web Streaming:</td>
+                    <td>Normal</td>
+                </tr>
+                <tr>
+                    <td>Dedicated:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>HQ Video Uploading:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Online Gaming:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Video Chatting:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Prices Upto:</td>
                     <td>Rs. 3000</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="{% url 'submit_signup' %}" class="btn btn-primary">Sign Up</a>
+                    </td>
+                </tr>
+            </table>
+            <table id='flash' class="custom-table custom-table-shadow custom-table-short custom-table-yellow">
+                <tr>
+                    <th colspan="2">Flash</th>
+                </tr>
+                <tr>
+                    <td>Speed:</td>
+                    <td>50 Mbps</td>
+                </tr>
+                <tr>
+                    <td>Web Streaming:</td>
+                    <td>Normal</td>
+                </tr>
+                <tr>
+                    <td>Dedicated:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>HQ Video Uploading:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Online Gaming:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Video Chatting:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Prices Upto:</td>
+                    <td>Rs. 5000</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="{% url 'submit_signup' %}" class="btn btn-primary">Sign Up</a>
+                    </td>
+                </tr>
+            </table>
+            <table class="custom-table custom-table-shadow custom-table-short custom-table-purple">
+                <tr>
+                    <th colspan="2">Void</th>
+                </tr>
+                <tr>
+                    <td>Speed:</td>
+                    <td>100 Mbps</td>
+                </tr>
+                <tr>
+                    <td>Web Streaming:</td>
+                    <td>Normal</td>
+                </tr>
+                <tr>
+                    <td>Dedicated:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>HQ Video Uploading:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Online Gaming:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Video Chatting:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Prices Upto:</td>
+                    <td>Rs. 9000</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="{% url 'submit_signup' %}" class="btn btn-primary">Sign Up</a>
+                    </td>
                 </tr>
             </table>
         </div>
     </div>
 
     <footer class="footer">
+        <p><strong>Address:</strong> Plot no.23-F, 3rd floor Muhammad Ali Society, Karachi</p>
         <p>&copy; 2023 Delta Communication. All rights reserved.</p>
     </footer>
 

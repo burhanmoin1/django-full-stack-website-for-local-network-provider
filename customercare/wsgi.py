@@ -14,3 +14,7 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "customercare.settings")
 
 application = get_wsgi_application()
+
+# This is the entry point for your WSGI application
+def app(environ, start_response):
+    return application(environ, start_response)

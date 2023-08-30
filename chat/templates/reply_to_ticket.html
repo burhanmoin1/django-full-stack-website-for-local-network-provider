@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Reply to Ticket</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="content">Reply:</label>
+    <textarea name="content" rows="3" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+{% endblock %}

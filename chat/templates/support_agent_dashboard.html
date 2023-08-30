@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Support Agent Dashboard</h1>
+  <ul>
+    {% for ticket in open_tickets %}
+      <li><a href="{% url 'view_ticket' ticket.id %}">{{ ticket.subject }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Ticket: {{ ticket.subject }}</h2>
+    <p>Status: {{ ticket.status }}</p>
+    <h3>Messages</h3>
+    <ul>
+        {% for message in messages %}
+            <li>{{ message.content }} - {{ message.sender }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'reply_to_ticket' ticket.id %}">
+        {% csrf_token %}
+        <label for="content">Reply:</label>
+        <textarea id="content" name="content" required></textarea>
+        <button type="submit">Send Reply</button>
+    </form>
+    <a href="{% url 'admin_reply_to_ticket' ticket.id %}">Admin Reply</a>
+{% endblock %}

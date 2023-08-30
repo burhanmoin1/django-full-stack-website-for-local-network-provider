@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from .config import DATABASE_PASSWORD
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = "django-insecure-r0kio$k3$vforo*@ibp27)4p6^-vuh_%6wrp7cy_=$$l6nxu0u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -38,7 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'formfiller'
+    'formfiller',
+    'chat',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -53,10 +56,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "customercare.urls"
 
+ASGI_APPLICATION = 'customercare.routing.application'
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'formfiller/templates')],
+        "DIRS": [os.path.join(BASE_DIR, 'formfiller/templates'), os.path.join(BASE_DIR, 'chat/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -76,11 +81,15 @@ WSGI_APPLICATION = "customercare.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'delta',
+        'USER': 'bana',
+        'PASSWORD': DATABASE_PASSWORD,  # Set the host if your PostgreSQL server is remote
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
@@ -118,14 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 # settings.py
-
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    # Absolute path to the static directory within each app
-    os.path.join(BASE_DIR, 'static'),
-    # You can add more directories here if needed
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

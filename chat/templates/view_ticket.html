@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ ticket.subject }}</h1>
+  <ul>
+    {% for message in messages %}
+      <li>{{ message.sender }} - {{ message.timestamp }}: {{ message.content }}</li>
+    {% endfor %}
+  </ul>
+  <form method="post" action="{% url 'reply_to_ticket' ticket.id %}">
+    {% csrf_token %}
+    <label for="content">Reply:</label>
+    <textarea name="content" rows="3" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  // Add this to your view_ticket.html template
+<script>
+    var ws_url = "ws://" + window.location.host + "/ws/chat/{{ ticket.id }}/";
+    var ws = new WebSocket(ws_url);
+
+    ws.onmessage = function(e) {
+        var message = JSON.parse(e.data).message;
+        $('#chat-messages').append('<div class="message">' + message + '</div>');
+    };
+
+    $('#reply-form').on('submit', function(e) {
+        e.preventDefault();
+        var content = $('#content').val();
+        ws.send(JSON.stringify({
+            'message': content
+        }));
+        $('#content').val('');
+    });
+</script>
+
+{% endblock %}

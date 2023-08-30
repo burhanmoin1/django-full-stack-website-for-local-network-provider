@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Customer Dashboard</h1>
+  <ul>
+    {% for ticket in tickets %}
+      <li><a href="{% url 'view_ticket' ticket.id %}">{{ ticket.subject }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'create_ticket' %}">Create Ticket</a>
+{% endblock %}

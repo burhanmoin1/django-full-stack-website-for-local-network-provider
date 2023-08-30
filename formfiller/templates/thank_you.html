@@ -1,0 +1,413 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Your custom styles go here */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #FFFFFF;
+            padding: 0;
+            padding-top: 0px;
+        }
+
+        .navbar {
+            margin-bottom: 10px; /* Change to your desired night blue color */
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 1);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            font-style: bold;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #999999 !important; /* New color value with !important */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #E02B20; /* New color value when hovered over */
+        }
+
+        .navbar-toggler {
+            background-color: #999999;
+        }
+
+        .navbar-toggler-icon{
+
+            background-color: #999999;
+        }
+
+        .night-blue-bg {
+            background-color: #001F3F;
+            color: white;
+        }
+
+        .live-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            background-color: #FF3F00;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            z-index: 9999;
+            max-width: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-popup-content {
+            padding: 10px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .container {
+            margin-top: 20px; /* Adjust the value as needed */
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #000000;
+            padding: 5px;
+            color: #fff;
+        }
+        
+        /* Style for the phone icon and number */
+        .phone-link {
+            color: #999999;
+            font-size: 14px;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .chat-message {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 10px;
+        }
+        
+        .user-message {
+            justify-content: flex-end;
+        }
+        
+        .agent-message {
+            justify-content: flex-start;
+        }
+        
+        .chat-message p {
+            background-color: #E5F1ED;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            max-width: 70%;
+        }
+
+        /* Adjust the textarea and send button styles */
+        #chat-message {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        
+        #send-button {
+            background-color: #FF3F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        
+        #send-button:hover {
+            background-color: #FF5349;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        .bot {
+            background-color: #E5F1ED;
+        }
+
+        .user {
+            background-color: #FFD700;
+            align-self: flex-end;
+        }
+
+        /* Style for the logo image */
+        .navbar-brand img.logo-img {
+            max-height: 60px; /* Adjust the maximum height of the logo */
+            max-width: 500px;
+            padding-right: 20px;
+            margin-left: 10px; /* Add some right padding to separate from other elements */
+        }
+    
+        /* Additional styles to align navbar items vertically */
+        .navbar-nav {
+            align-items: center;
+        }
+
+        #submit-button{
+
+            padding: 15px;
+            margin: 10px;
+            margin-left: 20%;
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
+</head>
+<body>
+        
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'delta logo.jpg' %}" alt="Logo" class="logo-img">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="productsDropdown">
+                        <a class="dropdown-item night-blue-text" href="{% url 'internet_page' %}">Internet</a>
+                        <a class="dropdown-item night-blue-text" href="{% url 'tv_page'%}">TV</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'contact_page' %}">Contact Us</a>
+                </li>
+            </ul>
+            <a href="tel:+923219244672" class="ml-auto phone-link">
+                <i class="fas fa-phone"></i> +923219244672
+            </a>
+            <a href="mailto:deltacn@gmail.com" class="ml-2 phone-link">
+                <i class="far fa-envelope"></i> deltacn@gmail.com
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Thank You!</div>
+                    <div class="card-body">
+                        <p>Your form has been submitted successfully. We appreciate your interest, our team will get back to you within the next 24 hours!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button type="button" class="live-chat-button">
+        <i class="fas fa-comment-dots fa-lg"></i>
+    </button>
+    
+    <div id="live-chat-popup" class="chat-popup">
+        <div class="chat-popup-content">
+            <!-- Add your chat interface here -->
+            <div id="chat-messages"></div>
+            <textarea id="chat-message" rows="4" placeholder="Type your message..."></textarea>
+            <button id="send-button">Send</button>
+            <span id="close-chat" class="close-popup">&times;</span>
+        </div>
+    </div>
+    <footer class="footer">
+        <p><strong>Address:</strong> Plot no.23-F, 3rd floor Muhammad Ali Society, Karachi</p>
+        <p>&copy; 2023 Delta Communication. All rights reserved.</p>
+    </footer>
+    <script>
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            var chatButton = document.querySelector(".live-chat-button");
+            var chatPopup = document.getElementById("live-chat-popup");
+            var chatMessages = document.getElementById("chat-messages");
+            var chatMessageInput = document.getElementById("chat-message");
+            var sendButton = document.getElementById("send-button");
+            var closeChat = document.getElementById("close-chat");
+        
+            var conversationIndex = 0;
+            var conversation = [
+            {
+                role: "bot",
+                message: "Hello! How can I assist you today?"
+            },
+            {
+                role: "user",
+                message: "Tell me about your internet packages."
+            },
+            {
+                role: "bot",
+                message: "Of course! We offer a range of internet packages to suit different needs. Our packages start from 5 Mbps and go up to 100 Mbps. Which speed are you interested in?"
+            },
+            {
+                role: "user",
+                message: "I'm looking for a package with at least 50 Mbps."
+            },
+            {
+                role: "bot",
+                message: "Great choice! We have packages with speeds of 50 Mbps and above. Would you like to know more about our pricing for those packages?"
+            },
+            {
+                role: "user",
+                message: "Yes, please provide me with the pricing details."
+            },
+            {
+                role: "bot",
+                message: "Certainly! Our 50 Mbps package starts at $49.99 per month, the 75 Mbps package is $69.99 per month, and the 100 Mbps package is $89.99 per month. Keep in mind that prices may vary based on your location."
+            },
+                // Add more conversation steps as needed
+            ];
+        
+            function displayMessage(role, message) {
+                var messageDiv = document.createElement("div");
+                messageDiv.className = "chat-message " + role;
+                messageDiv.textContent = message;
+                chatMessages.appendChild(messageDiv);
+        
+                // Scroll to the bottom of the chat
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        
+            function processUserMessage(userMessage) {
+                var botReply = "";
+        
+                // Process the user's message and determine bot's reply
+                if (userMessage.toLowerCase().includes("hello")) {
+                    botReply = "Hello! How can I assist you today?";
+                } else if (userMessage.toLowerCase().includes("packages")) {
+                    botReply = "Sure, we offer various packages. What speed are you looking for?";
+                } else if (userMessage.toLowerCase().includes("speed")) {
+                    botReply = "Great! We have packages with speeds ranging from 5 Mbps to 100 Mbps. Which package are you interested in?";
+                } else {
+                    botReply = "I'm sorry, I couldn't understand that. Please provide more details.";
+                }
+        
+                return botReply;
+            }
+
+            function handleUserMessage() {
+                var userMessage = chatMessageInput.value;
+                if (userMessage.trim() !== "") { // Check if the message is not empty or only spaces
+                    displayMessage("user", userMessage);
+                    var botReply = processUserMessage(userMessage);
+                    displayMessage("bot", botReply);
+                }
+                chatMessageInput.value = "";
+            }
+        
+            // ... Existing code ...
+        
+            chatMessageInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter" && !event.shiftKey) { // Send message if Enter is pressed without Shift key
+                    event.preventDefault();
+                    handleUserMessage();
+                }
+            });
+        
+            function handleUserMessage() {
+                var userMessage = chatMessageInput.value;
+                displayMessage("user", userMessage);
+        
+                var botReply = processUserMessage(userMessage);
+                displayMessage("bot", botReply);
+        
+                chatMessageInput.value = "";
+            }
+        
+            sendButton.addEventListener("click", function() {
+                handleUserMessage();
+            });
+        
+            chatMessageInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Prevent form submission
+                    handleUserMessage();
+                }
+            });
+        
+            closeChat.addEventListener("click", function() {
+                chatPopup.style.display = "none";
+            });
+        
+            chatButton.addEventListener("click", function() {
+                chatPopup.style.display = "block";
+                chatMessageInput.focus();
+            });
+        
+            // Initiate the conversation when the page loads
+            if (conversation.length > 0) {
+                displayMessage("bot", conversation[0].message);
+                conversationIndex++;
+            }
+        });
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

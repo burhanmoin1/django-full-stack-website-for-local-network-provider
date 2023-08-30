@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Your Chat App{% endblock %}</title>
+    <!-- Include your CSS stylesheets and other head content here -->
+</head>
+<body>
+
+<div class="header">
+    <h1>{% block header %}Your Chat App{% endblock %}</h1>
+    <p>Real-time customer support at your fingertips.</p>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<div class="cta">
+    <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+    <a href="{% url 'customer_register' %}" class="btn btn-secondary">Sign Up</a>
+</div>
+
+<div class="footer">
+    <p>&copy; 2023 Your Chat App. All rights reserved.</p>
+</div>
+
+</body>
+</html>
+

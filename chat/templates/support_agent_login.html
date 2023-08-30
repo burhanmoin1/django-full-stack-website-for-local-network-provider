@@ -1,0 +1,10 @@
+<!-- support_agent_login.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Support Agent Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}

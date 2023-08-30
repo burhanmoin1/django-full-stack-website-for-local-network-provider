@@ -12,6 +12,8 @@
             background-color: #001F3F; /* Change to night blue color */
             margin: 0;
             padding: 0;
+            color: white;
+            font-size: 22px;
         }
 
         .navbar-brand, .navbar-nav .nav-link {
@@ -184,7 +186,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="productsDropdown">
                         <a class="dropdown-item night-blue-text" href="{% url 'internet_page' %}">Internet</a>
-                        <a class="dropdown-item night-blue-text" href="#">TV</a>
+                        <a class="dropdown-item night-blue-text" href="{% url 'tv_page'%}">TV</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -214,6 +216,22 @@
         </div>
     </div>
 
+    <div class="container mt-5">
+        <h2>Contact Information</h2>
+        <p>If you prefer to contact us directly, you can reach us using the following details:</p>
+        
+        <p><strong>Address:</strong> Plot no.23-F, 3rd floor Muhammad Ali Society, Karachi</p>
+        <p><strong>Phone:</strong> <a href="tel:+923219244672">+923219244672</a></p>
+        <p><strong>Email:</strong> <a href="mailto:deltacn@gmail.com">deltacn@gmail.com</a></p>
+    </div>
+
+    <div class="container mt-5">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or inquiries, please feel free to get in touch with us at our phone number and email provided: +923463637743, +923219244672. Our team is always happy to assist you.</p>
+        <p>For customer support, please use the form below:</p>
+    </div>
+
+
     <form method="post" action="{% url 'contact_page' %}">
         {% csrf_token %}
         <div class="form-container">
@@ -235,7 +253,9 @@
             <input type="submit" value="Submit">
         </div>
     </form>
+
     <footer class="footer">
+        <p><strong>Address:</strong> Plot no.23-F, 3rd floor Muhammad Ali Society, Karachi</p>
         <p>&copy; 2023 Delta Communication. All rights reserved.</p>
     </footer>
 
